@@ -31,15 +31,13 @@ public class BillDataAccess {
         return mathes;
     }
 
-    public void deleteBills(List<Bill> bills){
-        try {
+    public void deleteBills(List<Bill> bills)throws NoSuchElementException{
+
             for (Bill bill: bills){
                 service.deleteBill(bill);
             }
-        }
-        catch (NoSuchElementException e){
 
-        };
+
 
     }
 
