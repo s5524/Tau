@@ -36,10 +36,5 @@ public class BillDataAccess {
             for (Bill bill: bills){
                 service.deleteBill(bill);
             }
-
-
-
     }
-
-
 }
