@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class BillTest {
 
     @Mock
@@ -60,6 +60,7 @@ public class BillTest {
         List<Bill> billsToDellete = new ArrayList<Bill>();
         billsToDellete.add(billToDelete1);
         billsToDellete.add(billToDelete2);
+
         billDataAccess.deleteBills(billsToDellete);
 
 

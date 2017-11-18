@@ -33,7 +33,8 @@ public class BillOrganiser implements BillService {
 
     public void deleteBill(Bill bill) throws NoSuchElementException
     {
-        if (mapDb.containsValue(bill)){
+
+        if (mapDb.containsKey(bill.getId())){
             mapDb.remove(bill.getId());
         }
         else {
