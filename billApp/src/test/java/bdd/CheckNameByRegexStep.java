@@ -47,8 +47,8 @@ public class CheckNameByRegexStep {
     }
 
     @Given("^Regex patern$")
-    public void regex_patern() {
-        pattern = "\\w{5}";
+    public void regex_patern(List<String> paterns) {
+        pattern = paterns.get(0);//"\\w{5}";
     }
 
     @When("^Searching$")
