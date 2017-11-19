@@ -28,9 +28,7 @@ public class BillDeleteSteps {
     public void there_are_this_bills_in_memory(List<Bill> bills) {
         listOfBills = bills;
         assertNotNull(listOfBills);
-
-
-       billService = new BillOrganiser();
+        billService = new BillOrganiser();
 
         for ( Bill bill : listOfBills) {
             billService.createBill(bill);
@@ -43,13 +41,6 @@ public class BillDeleteSteps {
     public void deleting(List<Bill> bill) throws Throwable {
 
         List<Bill> billsToDelete = bill;
-        for ( Bill bills : billsToDelete) {
-            for (Bill billsInMemory : billService.getBills()){
-                if (bills.getName()==billsInMemory.getName()&&bills.getPrice()==billsInMemory.getPrice()){
-                    bills.setId(billsInMemory.getId());
-                }
-            }
-        }
         assertNotNull(billsToDelete);
         billDataAccess.deleteBills(billsToDelete);
     }
