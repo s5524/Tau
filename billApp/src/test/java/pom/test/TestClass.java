@@ -88,10 +88,7 @@ public class TestClass {
         Assert.assertTrue(list.get(0).isDisplayed());
         Assert.assertTrue(list.get(1).isDisplayed());
         Assert.assertTrue(list.get(2).isDisplayed());
-        //Assert.assertEquals(muStoreHomePage.pointerOverLink().get(0),3);
-        //Assert.assertEquals(muStoreHomePage.pointerOverLink().get(0),3);
-        //System.out.println(myStoreHomePage.pointerOverLink().get(0).getText());
-    }
+     }
 
     @Test
     public void checkLoginUrl(){
@@ -111,17 +108,60 @@ public class TestClass {
 
         File f = ((TakesScreenshot) driver).
                 getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(f,new File("build/homePage.png"));
-
-       // myStoreLoginPage.submitAccountButton();
-       // myStoreLoginPage.submitAccountButton();
-       // myStoreLoginPage.submitAccountButton();
-       // myStoreLoginPage.submitAccountButton();
+        FileUtils.copyFile(f,new File("build/testPage.png"));
 
 
         Assert.assertTrue(myStoreLoginPage.alertMassage());
 
     }
+
+    @Test
+    public void checkValidDataInput() throws IOException, InterruptedException {
+        myStoreLoginPage.open();
+        myStoreLoginPage.inputMail();
+        myStoreLoginPage.CreateAccountButton();
+        //myStoreLoginPage.submitAccountButton();
+
+        myStoreLoginPage.putValidDataToRegisterPage();
+        myStoreLoginPage.submitAccountButton();
+        Assert.assertEquals(myStoreLoginPage.getUrl(),"http://automationpractice.com/index.php?controller=my-account");
+        Assert.assertTrue(myStoreLoginPage.checkUserPage());
+
+        Assert.assertTrue(myStoreLoginPage.clickLogout());
+
+
+
+        File f = ((TakesScreenshot) driver).
+                getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(f,new File("build/testPage.png"));
+    }
+    @Test
+    public void logInInvalidData() throws IOException {
+        myStoreLoginPage.open();
+        myStoreLoginPage.inputLoginMail("sz@sz.sz");
+        myStoreLoginPage.inputLoginPasw("12345");
+        myStoreLoginPage.clickLoginButton();
+        File f = ((TakesScreenshot) driver).
+                getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(f,new File("build/testPage.png"));
+        Assert.assertTrue(myStoreLoginPage.checkUserPage());
+        Assert.assertTrue(myStoreLoginPage.clickLogout());
+    }
+
+    @Test
+
+    public void logInValidData()
+    {
+        myStoreLoginPage.open();
+        myStoreLoginPage.inputLoginMail("sz@sadsz.sz");
+        myStoreLoginPage.inputLoginPasw("12345");
+        myStoreLoginPage.clickLoginButton();
+        Assert.assertTrue(myStoreLoginPage.alertWrongDataMassage());
+
+    }
+
+
+
 
 
 
