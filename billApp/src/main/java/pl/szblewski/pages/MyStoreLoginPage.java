@@ -73,6 +73,20 @@ public class MyStoreLoginPage {
         new Select(driver.findElement(By.id("id_country"))).selectByVisibleText("United States");
         driver.findElement(By.id("phone_mobile")).sendKeys("123456789");
     }
+
+    public void putValidDataToRegisterPageFromString(String name,String lastName,String pas,String adres,String state,String city,String postcode,String phone)
+    {
+        driver.findElement(By.id("customer_firstname")).sendKeys(name);
+        driver.findElement(By.id("customer_lastname")).sendKeys(lastName);
+        driver.findElement(By.id("passwd")).sendKeys(pas);
+        driver.findElement(By.id("address1")).sendKeys(adres);
+        new Select(driver.findElement(By.id("id_state"))).selectByVisibleText(state);
+        driver.findElement(By.id("city")).sendKeys(city);
+        driver.findElement(By.id("postcode")).sendKeys(postcode);
+        new Select(driver.findElement(By.id("id_country"))).selectByVisibleText("United States");
+        driver.findElement(By.id("phone_mobile")).sendKeys(phone);
+    }
+
      public boolean checkUserPage()
     {
         return driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/h1")).isDisplayed()==true;

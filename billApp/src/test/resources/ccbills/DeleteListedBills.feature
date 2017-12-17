@@ -1,5 +1,5 @@
-Feature: BillDelete
-        Scenario: Bill delete
+Feature: Register
+        Scenario: User is at registration page
         Given There are this bills in memory
         |Id     |Name           |Price      |
         |0      |Tesco          |111        |
